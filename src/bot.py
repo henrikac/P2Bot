@@ -8,17 +8,16 @@ from discord.ext.commands import Bot
 BOT_PREFIX = ('?', '!')
 
 p2_bot = Bot(command_prefix=BOT_PREFIX)
-client = discord.Client()
 
-@client.event
+@p2_bot.event
 async def on_member_join(member):
   channel = member.server.get_channel(os.environ.get('DISCORD_CHANNEL'))
   fmt = 'Welcome {0.mention} to {1.name}!'
-  await client.sent_message(channel, fmt.format(member, channel))
+  await p2_bot.sent_message(channel, fmt.format(member, channel))
 
-@client.event
+@p2_bot.event
 async def on_message(message):
-  if message.author == client.user:
+  if message.author == p2_bot.user:
     return
 
   if message.content.startswith('!hello'):
@@ -32,10 +31,10 @@ async def on_message(message):
     ]
 
     msg = '{0} {1.author.mention}'.format(random.choice(GREETINGS), message)
-    await client.send_message(message.channel, msg)
+    await p2_bot.send_message(message.channel, msg)
 
-@client.event
+@p2_bot.event
 async def on_ready():
   print(f'Logged in as {client.user.name}')
 
-client.run(os.environ.get('DISCORD_TOKEN'))
+p2_bot.run(os.environ.get('DISCORD_TOKEN'))
