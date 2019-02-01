@@ -11,9 +11,9 @@ client = discord.Client()
 
 @client.event
 async def on_member_join(member):
-  server = member.server
+  channel = member.server.get_channel(os.environ.get('DISCORD_CHANNEL'))
   fmt = 'Welcome {0.mention} to {1.name}!'
-  await client.sent_message(server, fmt.format(member, server))
+  await client.sent_message(channel, fmt.format(member, channel))
 
 @client.event
 async def on_message(message):
