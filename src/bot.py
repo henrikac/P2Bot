@@ -16,6 +16,15 @@ async def on_member_join(member):
   await client.sent_message(server, fmt.format(member, server))
 
 @client.event
+async def on_message(message):
+  if message.author == client.user:
+    return
+
+  if message.content.startswith('!hello'):
+    msg = 'Hello {0.author.mention}'.format(message)
+    await client.send_message(message.channel, msg)
+
+@client.event
 async def on_ready():
   print(f'Logged in as {client.user.name}')
 
