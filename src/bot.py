@@ -1,4 +1,5 @@
 import os
+import random
 
 import discord
 from discord.ext.commands import Bot
@@ -21,7 +22,16 @@ async def on_message(message):
     return
 
   if message.content.startswith('!hello'):
-    msg = 'Hello {0.author.mention}'.format(message)
+    GREETINGS = [
+      'Hello',
+      'Hello there',
+      'Hi',
+      'How are you doing?',
+      'Yo!',
+      'Whazzup?'
+    ]
+
+    msg = '{0} {1.author.mention}'.format(random.choice(GREETINGS), message)
     await client.send_message(message.channel, msg)
 
 @client.event
