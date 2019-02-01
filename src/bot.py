@@ -4,7 +4,6 @@ import random
 import discord
 from discord.ext.commands import Bot, CommandNotFound
 
-import settings
 
 DISCORD_CHANNEL = None
 DISCORD_TOKEN = None
@@ -13,6 +12,8 @@ if 'DISCORD_CHANNEL' in os.environ:
   DISCORD_CHANNEL = os.environ.get('DISCORD_CHANNEL')
   DISCORD_TOKEN = os.environ.get('DISCORD_TOKEN')
 else:
+  import settings
+
   DISCORD_CHANNEL = settings.DISCORD_CHANNEL
   DISCORD_TOKEN = settings.DISCORD_TOKEN
 
