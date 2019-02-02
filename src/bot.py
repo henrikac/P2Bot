@@ -62,7 +62,10 @@ async def ping(ctx):
 
 @p2_bot.command(name='king', description='surprise *evil laugh', brief='surprise *evil laugh*')
 async def king(ctx):
-  await ctx.send(':crown: All hail King Henrik! :crown:')
+  try:
+    await ctx.send(':crown: All hail King Henrik! :crown:')
+  except Forbidden:
+    print('hmmm')
 
 
 p2_bot.run(DISCORD_TOKEN)
