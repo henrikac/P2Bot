@@ -4,6 +4,7 @@ import random
 import discord
 from discord.ext import commands
 
+# ===== SETUP ===== #
 
 DISCORD_CHANNEL = None
 DISCORD_TOKEN = None
@@ -19,21 +20,21 @@ else:
 
 BOT_PREFIX = ('?', '!', '.')
 
-p2_bot = commands.Bot(command_prefix=BOT_PREFIX)
+bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 # ===== EVENTS ===== #
 
-@p2_bot.event
+@bot.event
 async def on_member_join(member):
-  guild = p2_bot.get_guild(DISCORD_CHANNEL)
+  guild = bot.get_guild(DISCORD_CHANNEL)
   msg = f'Welcome {member.mention} to {guild.name}!'
-  await p2_bot.send(msg)
+  await bot.send(msg)
 
-@p2_bot.event
+@bot.event
 async def on_ready():
-  print(f'Logged in as {p2_bot.user.name}')
+  print(f'Logged in as {bot.user.name}')
 
-@p2_bot.event
+@bot.event
 async def on_command_error(ctx, error):
   if isinstance(error, commands.CommandNotFound):
     await ctx.author.send(f'Unknown command: {ctx.command}')  # sends private msg to the author
@@ -41,7 +42,7 @@ async def on_command_error(ctx, error):
 
 # ====== COMMANDS ===== #
 
-@p2_bot.command(name='hello', description='Get a random greeting', brief='Get a random greeting')
+@bot.command(name='hello', description='Get a random greeting', brief='Get a random greeting')
 async def hello(ctx):
   GREETINGS = [
     'Hello',
@@ -55,14 +56,27 @@ async def hello(ctx):
   msg = f'{random.choice(GREETINGS)} {ctx.author.mention}'
   await ctx.send(msg)
 
-@p2_bot.command(name='ping', description='ping pong', brief='ping pong', pass_context=True)
+@bot.command(name='ping', description='ping pong', brief='ping pong', pass_context=True)
 async def ping(ctx):
   await ctx.send(':ping_pong: pong!! xD')
 
-@p2_bot.command(name='king', description='surprise *evil laugh', brief='surprise *evil laugh*')
+@bot.command(name='king', description='surprise *evil laugh', brief='surprise *evil laugh*')
 async def king(ctx):
   await ctx.send(':crown: All hail King Henrik! :crown:')
 
+@bot.command(name='watson', description='get my attention', brief='get my attention')
+async def watson(ctx):
+  RESPONSES = [
+    'You rang?',
+    'What can I do for you?',
+    'At your service',
+    'Yeeees..?',
+    'Can a hard working bot not get 2 minutes of rest?'
+  ]
 
-p2_bot.run(DISCORD_TOKEN)
+  msg = f'{random.choice(RESPONSES)} {ctx.author.mention}'
+  await ctx.send(msg)
+
+
+bot.run(DISCORD_TOKEN)
 
