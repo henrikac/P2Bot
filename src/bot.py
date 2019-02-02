@@ -2,7 +2,7 @@ import os
 import random
 
 import discord
-from discord.ext.commands import Bot, CommandNotFound
+from discord.ext import commands
 
 
 DISCORD_CHANNEL = None
@@ -19,7 +19,7 @@ else:
 
 BOT_PREFIX = ('?', '!', '.')
 
-p2_bot = Bot(command_prefix=BOT_PREFIX)
+p2_bot = commands.Bot(command_prefix=BOT_PREFIX)
 
 # ===== EVENTS ===== #
 
@@ -35,7 +35,7 @@ async def on_ready():
 
 @p2_bot.event
 async def on_command_error(ctx, error):
-  if isinstance(error, CommandNotFound):
+  if isinstance(error, commands.CommandNotFound):
     await ctx.author.send(f'Unknown command: {ctx.command}')  # sends private msg to the author
     return
 
@@ -43,7 +43,6 @@ async def on_command_error(ctx, error):
 
 @p2_bot.command(name='hello', description='Get a random greeting', brief='Get a random greeting')
 async def hello(ctx):
-  print('Message entered')
   GREETINGS = [
     'Hello',
     'Hello there',
@@ -66,3 +65,4 @@ async def king(ctx):
 
 
 p2_bot.run(DISCORD_TOKEN)
+
