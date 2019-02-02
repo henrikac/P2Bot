@@ -62,7 +62,6 @@ async def ping(ctx):
 
 @p2_bot.command(name='king', description='surprise *evil laugh', brief='surprise *evil laugh*')
 async def king(ctx):
-  guild = p2_bot.get_guild(DISCORD_CHANNEL)
   await ctx.send(':crown: All hail King Henrik! :crown:')
 
 
