@@ -43,18 +43,18 @@ async def on_command_error(ctx, error):
 
 @p2_bot.command(name='hello', description='Get a random greeting', brief='Get a random greeting')
 async def hello(ctx):
-    print('Message entered')
-    GREETINGS = [
-      'Hello',
-      'Hello there',
-      'Hi',
-      'How are you doing?',
-      'Yo!',
-      'Whazzup?'
-    ]
+  print('Message entered')
+  GREETINGS = [
+    'Hello',
+    'Hello there',
+    'Hi',
+    'How are you doing?',
+    'Yo!',
+    'Whazzup?'
+  ]
 
-    msg = f'{random.choice(GREETINGS)} {ctx.author.mention}'
-    await ctx.send(msg)
+  msg = f'{random.choice(GREETINGS)} {ctx.author.mention}'
+  await ctx.send(msg)
 
 @p2_bot.command(name='ping', description='ping pong', brief='ping pong', pass_context=True)
 async def ping(ctx):
@@ -62,10 +62,7 @@ async def ping(ctx):
 
 @p2_bot.command(name='king', description='surprise *evil laugh', brief='surprise *evil laugh*')
 async def king(ctx):
-  try:
-    await ctx.send(':crown: All hail King Henrik! :crown:')
-  except Forbidden:
-    print('hmmm')
+  await ctx.send(':crown: All hail King Henrik! :crown:')
 
 
 p2_bot.run(DISCORD_TOKEN)
