@@ -77,6 +77,18 @@ async def watson(ctx):
   msg = f'{random.choice(RESPONSES)} {ctx.author.mention}'
   await ctx.send(msg)
 
+@bot.command(name='flip', description='flip a coin', brief='flip a coin')
+async def flip(ctx):
+  result = None
+  coin_val = random.randint(0, 1)
+
+  if coin_val == 1:
+    result = 'heads'
+  else:
+    result = 'tails'
+
+  await ctx.send(result)
+
 
 bot.run(DISCORD_TOKEN)
 
