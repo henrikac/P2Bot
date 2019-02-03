@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 import random
 
@@ -79,6 +80,7 @@ async def watson(ctx):
 
 @bot.command(name='flip', description='flip a coin', brief='flip a coin')
 async def flip(ctx):
+  random.seed(datetime.now())
   result = None
   coin_val = random.randint(0, 1)
 
