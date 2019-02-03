@@ -89,7 +89,7 @@ async def flip(ctx):
   else:
     result = 'tails'
 
-  await ctx.send(result)
+  await ctx.send(f'**Coin flipped:** {result}')
 
 
 bot.run(DISCORD_TOKEN)
