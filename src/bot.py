@@ -99,6 +99,10 @@ async def py_help(ctx, *args):
         )
   await ctx.send(url)
 
+@bot.command(name='nickname', description='change your nickname', brief='change your nickname', pass_context=True)
+async def nick(ctx, *, nickname):
+  await bot.change_nickname(ctx.message.author, nickname)
+
 
 bot.run(DISCORD_TOKEN)
 
