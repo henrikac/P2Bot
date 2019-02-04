@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import random
+from urllib.parse import urlencode
 
 import discord
 from discord.ext import commands
@@ -90,6 +91,13 @@ async def flip(ctx):
     result = 'tails'
 
   await ctx.send(f'**Coin flipped:** {result}')
+
+@bot.command(name='py_help', description='search the python docs - ex: .py_help str OR .py_help str format', brief='search the python docs')
+async def py_help(ctx, *args):
+  url = ('https://docs.python.org/3/search.html?q={}'
+          '&check_keywords=yes&area=default'.format(urlencode({'q': ' '.join(args)}))
+        )
+  await ctx.send(url)
 
 
 bot.run(DISCORD_TOKEN)
