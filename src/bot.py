@@ -108,18 +108,18 @@ async def mobbe_generator(ctx):
   possible_victims = ['Anja', 'Anna', 'Nana', 'Henrik', 'Rasmus', 'Taniya', 'Woahab']
   random_victim = possible_victims[random.randint(0, 6)]
 
-  msg = f'```c'
-  msg += f'#include <stdlib.h>\n'
-  msg += f'#include <time.h>\n\n'
-  msg += f'#define PEEPZ 7\n\n'
-  msg += f'srand(time(NULL));\n\n'
-  msg += f'char* mobbe_generator()\n'
-  msg += f'{\n'
-  msg += f'  char* possible_victims[PEEPZ] = {"Anja", "Anna", "Nana", "Henrik", "Rasmus", "Taniya", "Woahab"};\n\n'
-  msg += f'  return possible_victims[rand() % PEEPZ];\n'
-  msg += f'}\n\n'
-  msg += f'mobbe_generator() = {random_victim}\n'
-  msg += f'```'
+  msg = '```c'
+  msg += '#include <stdlib.h>\n'
+  msg += '#include <time.h>\n\n'
+  msg += '#define PEEPZ 7\n\n'
+  msg += 'srand(time(NULL));\n\n'
+  msg += 'char* mobbe_generator()\n'
+  msg += '{\n'
+  msg += '  char* possible_victims[PEEPZ] = {"Anja", "Anna", "Nana", "Henrik", "Rasmus", "Taniya", "Woahab"};\n\n'
+  msg += '  return possible_victims[rand() % PEEPZ];\n'
+  msg += '}\n\n'
+  msg += f'mobbe_generator() = {random_victim}'
+  msg += '\n```'
   await ctx.send(msg)
 
 
