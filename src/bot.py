@@ -103,6 +103,25 @@ async def py_help(ctx, *args):
 async def nick(ctx, *, nickname):
   await bot.change_nickname(ctx.message.author, nickname)
 
+@bot.command(name='mobbe-generator', description='gets weekly victim', brief='gets weekly victim', aliases=['mobbe-generator()'])
+async def mobbe_generator(ctx):
+  possible_victims = ['Anja', 'Anna', 'Nana', 'Henrik', 'Rasmus', 'Taniya', 'Woahab']
+  random_victim = possible_victims[random.randint(0, 6)]
+
+  msg = f'```c'
+  msg += f'#include <stdlib.h>\n'
+  msg += f'#include <time.h>\n\n'
+  msg += f'#define PEEPZ 7\n\n'
+  msg += f'srand(time(NULL));\n\n'
+  msg += f'char* mobbe_generator()\n'
+  msg += f'{\n'
+  msg += f'  char* possible_victims[PEEPZ] = {"Anja", "Anna", "Nana", "Henrik", "Rasmus", "Taniya", "Woahab"};\n\n'
+  msg += f'  return possible_victims[rand() % PEEPZ];\n'
+  msg += f'}\n\n'
+  msg += f'mobbe_generator() = {random_victim}\n'
+  msg += f'```'
+  await ctx.send(msg)
+
 
 bot.run(DISCORD_TOKEN)
 
