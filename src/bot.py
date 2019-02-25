@@ -108,7 +108,7 @@ async def mobbe_generator(ctx):
   possible_victims = ['Anja', 'Anna', 'Nana', 'Henrik', 'Rasmus', 'Taniya', 'Woahab']
   random_victim = possible_victims[random.randint(0, 6)]
 
-  msg = '```c'
+  msg = '```c\n'
   msg += '#include <stdlib.h>\n'
   msg += '#include <time.h>\n\n'
   msg += '#define PEEPZ 7\n\n'
