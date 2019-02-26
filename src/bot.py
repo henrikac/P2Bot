@@ -105,6 +105,7 @@ async def nick(ctx, *, nickname):
 
 @bot.command(name='mobbe-generator', description='gets weekly victim', brief='gets weekly victim', aliases=['mobbe-generator()'])
 async def mobbe_generator(ctx):
+  random.seed(datetime.now())
   possible_victims = ['Anja', 'Anna', 'Nana', 'Henrik', 'Rasmus', 'Taniya', 'Woahab']
   random_victim = possible_victims[random.randint(0, 6)]
 
