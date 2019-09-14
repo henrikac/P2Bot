@@ -20,7 +20,7 @@ else:
   DISCORD_CHANNEL = settings.DISCORD_CHANNEL
   DISCORD_TOKEN = settings.DISCORD_TOKEN
 
-BOT_PREFIX = ('?', '!', '.')
+BOT_PREFIX = ('?', '.')
 
 bot = commands.Bot(command_prefix=BOT_PREFIX)
 
